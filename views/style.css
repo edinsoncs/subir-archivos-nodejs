@@ -9,7 +9,7 @@ body { background: #4183D7;}
 .section .form .fieldset img {position:absolute; top: 50%;margin-top: 4em;left: 50%;margin-left: -3em;}
 .section .form .fieldset input[type='file'] {outline: medium none;display:none;}
 .section .form .fieldset input[type='submit']{position:absolute;bottom:0;background: #22A7F0;padding: 0.8em 1.5em;border:none;color:white;box-shadow: 0 4px 0 #157EB7;left: 50%;margin-left: -4.5em;}
-
+.sectionvista .sectionvista__Figure img{ width:100%;}
 .loadCss{display:none;background:#89C4F4; height: 10px; width: 0;animation:pro 1s;}
 @keyframes pro {
 	0 {

@@ -68,8 +68,10 @@ app.post('/subirfotito', multipartMiddleware, function(req, res){
 					console.log(err);
 				}
 				else {
-					res.redirect('imagenes/' + nameImagen);
-					urlImagen = nameImagen;
+					//res.redirect('imagenes/' + nameImagen);
+					res.redirect('vistas-' + nameImagen);
+					urlImagen = '/imagenes/' + nameImagen;
+					console.log(urlImagen);
 				}
 			});
 		}
@@ -85,16 +87,18 @@ app.get('/imagenes/:nameimagen', function(req, res){
 		'Content-Type': 'image/gif'
 	});
 
-	
-
 	var imagen = fs.readFileSync(__dirname + '/imagenes/'+ req.params.nameimagen);
-
-
 
 	//console.log(urlImagen);
 	res.end(imagen, 'binary');
 });
 
+app.get('/vistas-:name', function(req, res){
+	res.render('vista', {
+		title: 'title',
+		'imagen': urlImagen
+	});
+})
 
 
 app.listen(port, function(){
