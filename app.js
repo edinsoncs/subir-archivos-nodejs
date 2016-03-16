@@ -4,14 +4,18 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var fs = require('fs');
 
+var path = require('path');
+
 var bodyParser = require('body-parser');
 
 var port = 3000;
 
 var urlImagen = '';
 
+var routHome = require('./routes/index');
 
-var formulario = "<form method='post' action='/subirfotito' enctype='multipart/form-data'>"+
+
+/*var formulario = "<form method='post' action='/subirfotito' enctype='multipart/form-data'>"+
 				 "<fieldset>"+
 				 	"<label>Subiremos una foto</label>"+
 				 "</fieldset>"+
@@ -19,17 +23,30 @@ var formulario = "<form method='post' action='/subirfotito' enctype='multipart/f
 				 "<fieldset>"+
 				 "<input type='submit' value='subir fotito'>"+
 				 "</fieldset>"
-				+"</form>";
+				+"</form>";*/
 
 //solucionando fixess
 app.use(bodyParser.json());
 
+//nuestro views
+
+app.set('views', path.join(__dirname + '/views'));
+
+//nuestro engine
+app.set('view engine', 'jade');
+
+//nuestra carpeta public
+app.use(express.static(path.join(__dirname + '/public')));
+
+
 app.use(bodyParser.urlencoded({ extended: true}));
 
-app.get('/', function(req, res){
+/*app.get('/', function(req, res){
 	res.writeHead('200', {'Content-Type': 'text/html'});
 	res.end(formulario);
-});
+});*/
+
+app.use('/', routHome);
 
 app.post('/subirfotito', multipartMiddleware, function(req, res){
 
@@ -38,6 +55,7 @@ app.post('/subirfotito', multipartMiddleware, function(req, res){
 
 	fs.readFile(req.files.imagen.path, function(err, data){
 		var nameImagen = req.files.imagen.name;
+		console.log(data);
 		if(err) {
 			console.log('Sucedio un error: ' + err);
 		}
@@ -67,7 +85,11 @@ app.get('/imagenes/:nameimagen', function(req, res){
 		'Content-Type': 'image/gif'
 	});
 
+	
+
 	var imagen = fs.readFileSync(__dirname + '/imagenes/'+ req.params.nameimagen);
+
+
 
 	//console.log(urlImagen);
 	res.end(imagen, 'binary');

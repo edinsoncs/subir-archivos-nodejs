@@ -1,5 +1,5 @@
 {
-  "name": "node01",
+  "name": "upload-images",
   "version": "1.0.0",
   "description": "ejemplo upload images",
   "main": "index.js",
@@ -7,10 +7,26 @@
     "start": "node app"
   },
   "author": "edi",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.0",
     "connect-multiparty": "^2.0.0",
-    "express": "^4.13.4"
-  }
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "mysql": "github:felixge/node-mysql"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ockang/subir-archivos-nodejs.git"
+  },
+  "keywords": [
+    "uploadimages",
+    "subirimagenes",
+    "archivosimagenes"
+  ],
+  "bugs": {
+    "url": "https://github.com/ockang/subir-archivos-nodejs/issues"
+  },
+  "homepage": "https://github.com/ockang/subir-archivos-nodejs#readme"
 }

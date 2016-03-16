@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title #{title}
+	script(src='http://code.jquery.com/jquery-2.2.1.min.js')
+	style
+		include normalize.css
+		include style.css
+body
+	div.loadCss
+	section.section
+		form.form(action="/subirfotito", method="post" enctype="multipart/form-data")
+			fieldset.fieldset
+				label.label
+					|Subí Imagenes
+			fieldset.fieldset
+				label(for="img")
+					h2.fieldset__Btn
+						| Presiona Click
+				input(type="file", name='imagen', id='img')
+			fieldset.fieldset
+				img(src="", id="showIMG", alt="")
+			fieldset.fieldset
+				input(type="submit", value='subir imagen')
+
+	script
+		include js.js
